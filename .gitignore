@@ -1,0 +1,11 @@
+*.bak
+*.swp
+events.pl
+Config/*
+!Config/LoadList.txt
+doc/
+lib/*.class
+log/
+network/
+rough/
+
