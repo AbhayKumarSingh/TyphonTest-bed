@@ -177,9 +177,10 @@ fire_handler(Name,Status):-
 action(( init, _, _, _ ), _ ):-
 	initialize_initial_values.
 
-action(( sol, Node, Type, Data ), List ):-
+action(( sol, Node, Type, _ ), List ):-
 	member([ Node, IP, _, TaskMPort, _, _ ], List ),
 
+	mysol( Type, Data ),
 	agent_create( master, L, IP, TaskMPort ),
 	agent_post( master, L, assertSolution( Type, Data ) ).
 
