@@ -17,7 +17,11 @@ start_exe:-
 	solutionOnCurrentNode( SolutionHere, _ ),
 	(	ProblemHere == SolutionHere ->
 		(
-			true		% use the solution and tell the log server that the solution is already with you.
+			true,		% use the solution and tell the log server that the solution is already with you.
+			( write( `Solution found for,` ), write( ThisNode ), write( `,Currentnode:,` ), write( ThisNode ), write( `,` ), write( ProblemHere )) ~> Var2,
+			send_log( Var2 ),
+			( write( `Solution received at,` ), write( ThisNode ), write( `,Currentnode:,` ), write( ThisNode ), write( `,` ), write( ProblemHere ) ) ~> Var1,
+			send_log( Var1 )
 		)
 	;
 		(
