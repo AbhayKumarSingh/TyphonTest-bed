@@ -53,8 +53,8 @@ public class Generate_net {
 			
 			file_str = file_str+"platform_start("+node_config[k][2]+"),\n"+
 			"start_task_manager("+node_config[k][3]+"),\n"+
-			"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
-			"consult('initiation.pl'),\n"+input_str+"\n"+
+		//	"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
+		//	"consult('initiation.pl'),\n"+input_str+"\n"+
 			"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 			}
 			else
@@ -64,8 +64,8 @@ public class Generate_net {
 				file_str = file_str+"assert(neighbors('"+node_config[intial_node][0]+"',`"+node_config[intial_node][1]+"`,"+node_config[intial_node][2]+","+node_config[intial_node][4]+","+node_config[intial_node][5]+")),\n";
 				file_str = file_str+"platform_start("+node_config[k][2]+"),\n"+
 				"start_task_manager("+node_config[k][3]+"),\n"+
-				"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
-				"consult('initiation.pl'),\n"+input_str+"\n"+
+			//	"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
+			//	"consult('initiation.pl'),\n"+input_str+"\n"+
 				"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 				
 			}
@@ -84,8 +84,8 @@ public class Generate_net {
 					"assert(neighbors('"+node_config[nodes-1][0]+"',`"+node_config[nodes-1][1]+"`,"+node_config[nodes-1][2]+","+node_config[nodes-1][4]+","+node_config[nodes-1][5]+")),\n"+ 
 					"platform_start("+node_config[k][2]+"),\n"+
 					"start_task_manager("+node_config[k][3]+"),\n"+
-					"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
-					"consult('initiation.pl'),\n"+input_str+"\n"+
+				//	"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
+				//	"consult('initiation.pl'),\n"+input_str+"\n"+
 					"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 				}
 				else if(k == (nodes-1)){
@@ -95,8 +95,8 @@ public class Generate_net {
 					"assert(neighbors('"+node_config[k-1][0]+"',`"+node_config[k-1][1]+"`,"+node_config[k-1][2]+","+node_config[k-1][4]+","+node_config[k-1][5]+")),\n"+ 
 					"platform_start("+node_config[k][2]+"),\n"+
 					"start_task_manager("+node_config[k][3]+"),\n"+
-					"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
-					"consult('initiation.pl'),\n"+input_str+"\n"+
+				//	"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
+				//	"consult('initiation.pl'),\n"+input_str+"\n"+
 					"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 				}
 				else{
@@ -106,8 +106,8 @@ public class Generate_net {
 						"assert(neighbors('"+node_config[k-1][0]+"',`"+node_config[k-1][1]+"`,"+node_config[k-1][2]+","+node_config[k-1][4]+","+node_config[k-1][5]+")),\n"+ 
 						"platform_start("+node_config[k][2]+"),\n"+
 						"start_task_manager("+node_config[k][3]+"),\n"+
-						"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
-						"consult('initiation.pl'),\n"+input_str+"\n"+
+				//		"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
+				//		"consult('initiation.pl'),\n"+input_str+"\n"+
 						"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 				}
 			    out.println(file_str);
@@ -130,7 +130,7 @@ public static void ring_topology_mod(PrintWriter out){
 					"assert(neighbors('"+node_config[nodes-k-1][0]+"',`"+node_config[nodes-k-1][1]+"`,"+node_config[nodes-k-1][2]+",6,0)),\n"+ 
 					"platform_start("+node_config[k][2]+"),\n"+
 					"start_task_manager("+node_config[k][3]+"),\n"+
-					"consult('initiation.pl'),\n"+input_str+"\n"+
+				//	"consult('initiation.pl'),\n"+input_str+"\n"+
 					"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 				}
 				else if((k+4) >= (nodes-1)){
@@ -142,7 +142,7 @@ public static void ring_topology_mod(PrintWriter out){
 					"assert(neighbors('"+node_config[l-1][0]+"',`"+node_config[l-1][1]+"`,"+node_config[l-1][2]+",6,0)),\n"+ 
 					"platform_start("+node_config[k][2]+"),\n"+
 					"start_task_manager("+node_config[k][3]+"),\n"+
-					"consult('initiation.pl'),\n"+input_str+"\n"+
+				//	"consult('initiation.pl'),\n"+input_str+"\n"+
 					"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 				}
 				else{
@@ -153,7 +153,7 @@ public static void ring_topology_mod(PrintWriter out){
 						"assert(neighbors('"+node_config[k-4][0]+"',`"+node_config[k-4][1]+"`,"+node_config[k-4][2]+",6,0)),\n"+ 
 						"platform_start("+node_config[k][2]+"),\n"+
 						"start_task_manager("+node_config[k][3]+"),\n"+
-						"consult('initiation.pl'),\n"+input_str+"\n"+
+					//	"consult('initiation.pl'),\n"+input_str+"\n"+
 						"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 				}
 			    out.println(file_str);
@@ -185,8 +185,8 @@ public static void binary_tree(PrintWriter out){
 					
 					file_str = file_str +"platform_start("+node_config[k][2]+"),\n"+
 					"start_task_manager("+node_config[k][3]+"),\n"+
-					"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
-					"consult('initiation.pl'),\n"+input_str+"\n"+
+					//"start_queue_manager("+node_config[k][4]+","+node_config[k][5]+"),\n"+
+					//"consult('initiation.pl'),\n"+input_str+"\n"+
 					"write(`~M~JNODE:"+ node_config[k][0] +"~M~J`).\n";
 			
 		    out.println(file_str);
@@ -264,7 +264,7 @@ public static void write_script(String script, PrintWriter out) throws Exception
 									"\t\t\tsystem_ip(IP),\n"+
 									script+
 									"forall(member(X,L),(replaceX(X,Result),exec('pro386w.exe',Result,Y))).\n\n"+
-									"replaceX(X,FinalText):- config_file(Config_File), portray_clause(\n \t\t(";
+									"replaceX(X,FinalText):- config_file(Config_File), topology_file(Topo_File), portray_clause(\n \t\t(";
 									
 		InputStream    fis = new FileInputStream("../Config/LoadList.txt");
          BufferedReader br = new BufferedReader(new InputStreamReader(fis, Charset.forName("UTF-8")));
@@ -281,7 +281,7 @@ public static void write_script(String script, PrintWriter out) throws Exception
 			//System.out.println("IP:"+ip_vector.nextElement());
 			load_str = load_str +"ensure_loaded("+load_vector.nextElement()+"),\n";
 		}//while
-		load_str = load_str +"consult(Config_File),\n";
+		load_str = load_str +"consult(Config_File), consult(Topo_File),\n";
 		out.println(load_code);
 		out.println(load_str);
 		out.println("node(concerned_node)\n\t\t	)\n	)~>String,");
@@ -345,16 +345,34 @@ public static void write_script(String script, PrintWriter out) throws Exception
 		System.out.println("Division:"+division);
 		
 		Enumeration ip_vec = IP.elements();
+		String IP_str = null;
+		int node_size = 0;
+		int remaining_nodes = nodes;
+		int remaining_ips = IP.size();
 		while(ip_vec.hasMoreElements()){
-			if(moduls>0){
-				int temp = (division+1);
+			// if(moduls>0){
+				// int temp = (division+1);
 				//System.out.println("temp:"+temp);
-				nodes_per_IP.put(ip_vec.nextElement(),new Integer(temp));
+				// nodes_per_IP.put(ip_vec.nextElement(),new Integer(temp));
 				//System.out.println("For:");
-				moduls--;
+				// moduls--;
+			// }
+			// else
+			// nodes_per_IP.put(ip_vec.nextElement(),new Integer(division));
+			remaining_nodes = remaining_nodes - node_size;
+			IP_str = (String)ip_vec.nextElement();
+			System.out.println("Enter number of nodes for "+IP_str+" out of "+nodes+" currently "+remaining_nodes+" are remaining :");
+			System.out.println("Suggestive number of nodes:"+division);
+			System.out.println("Number of IPs left :" + remaining_ips);
+			node_size = Integer.parseInt(sc.next());
+			while(remaining_ips == 1 && node_size<remaining_nodes){
+				System.out.println("**[Error!!] Nodes entered is less than the total number of remaining nodes");
+				System.out.println("Enter number of nodes for "+IP_str+" out of "+nodes+" currently "+remaining_nodes+" are remaining :");
+				System.out.println("Number of IPs left :" + remaining_ips);
+				node_size = Integer.parseInt(sc.next());
 			}
-			else
-			nodes_per_IP.put(ip_vec.nextElement(),new Integer(division));
+			nodes_per_IP.put(IP_str,node_size);
+			remaining_ips = remaining_ips - 1;
 		}
 		
 		Enumeration number_of_nodes = nodes_per_IP.keys();
@@ -370,7 +388,7 @@ public static void write_script(String script, PrintWriter out) throws Exception
 		 PrintWriter out = new PrintWriter(outFile);
 		 
 		int counter = 0;
-		int platform_port = 49250;
+		int platform_port = 25500;
 		int taskmanager_port = 50000;
 		int enqueue_port =	55000;
 		int dequeue_port =	60000;
