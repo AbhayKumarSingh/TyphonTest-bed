@@ -11,7 +11,12 @@ public class Client{
 	public static void main(String args[]){
 		
 		Client app = new Client();
-		app.mainLoop();
+		if( args.length == 0 )
+			app.mainLoop();
+		else if( args.length == 1 )
+			app.executeOption(Integer.parseInt(args[0]));
+		else
+			System.out.println( "Wrong number of arguments" );
 	}
 	
     int readFromUser(){

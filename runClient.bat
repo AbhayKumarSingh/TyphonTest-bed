@@ -1,3 +1,3 @@
 cd lib
 javac Client.java
-java Client
+java Client %1

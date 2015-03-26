@@ -18,6 +18,12 @@ start_master:-
 
 start_master:- write(`~M~JError in Create Master Agent`).
 
+% To kill prolog instances throughout the network.
+kill_throughout_network:-
+			exec('runClient.bat','2',_),
+			delay( 3000 ),
+		!.
+
 % network control manages the genration and termination of the nodes in different
 % PCs (IPs)
 start_network_control:-
@@ -195,6 +201,14 @@ action((prob, Node, Type, _ ), List):-
 	agent_post( master, PL, exec_sol( consult( 'initiation.pl' ) ) ),
 	agent_post( master, PL, exec_sol( start_exe ) ).
 	
+action(( end, _, _, _ ), _ ):-
+	( write( `End of Experiment` ) ) ~> Avar,
+	send_log( Avar ),
+	kill_throughout_network,
+	exec('C:\Windows\System32\taskkill.exe', '/F /IM PRO386W.EXE /T', _).
+	% more to be done later.
+
+
 % induce_agents induces agents at the specified nodes in the network
 induce_agents(File,Pred):-
 		grid_spawn_agent(List),
