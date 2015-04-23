@@ -68,8 +68,8 @@ help_move_typhlet( GUID ):-
 								(
 									( NeighNode \= Last ->
 										(
-											connect( IP, Port, ALinkToFlood ),
-											clone_typhlet( GUID, ALinkToFlood ),
+											clone_typhlet_local(GUID, GUID2),
+											move_typhlet(GUID2, IP, Port),
 											( write( `Packet sent from,`), write( CurrentNode ), write( `,to,` ), write( NeighNode )) ~> Ss,
 											send_log( Ss )
 										)
@@ -98,7 +98,8 @@ help_move_typhlet( GUID ):-
 						(
 							% consume the solution
 							typhlet_kill( GUID ),		%more details can be added later like memorizing the solution, etc.
-							retract( problemOnCurrentNode( AgentProblem )),
+							% retract has been replaced by retractall (experimental)
+							retractall( problemOnCurrentNode( AgentProblem )),
 							assert( problemOnCurrentNode( none )),
 							( write( `Solution received at,` ), write( ProbNode ), write( `,Currentnode:,` ), write( CurrentNode ), write( `,` ), write( AgentProblem) ) ~> Var1,
 							send_log( Var1 )

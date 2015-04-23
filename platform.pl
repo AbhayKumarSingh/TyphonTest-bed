@@ -105,7 +105,9 @@ set_token(Token):- retract(platform_token(_)),assert(platform_token(Token)).
 % connect/3 creates a link between two platforms. The other platform is specified by IP and Port. Results in Link which is used later on 
 % for platform-to-platform communication. Just uses the agent_create/4 from Chimera. <SIMPLE>
 connect(IP,Port,Link):-					 
-   agent_create(platform,Link,IP,Port).
+   repeat,
+   catch( Err, (agent_create(platform,Link,IP,Port),!)),
+   Err = 0.
 
 
 % disconnect/1 breaks the above connection. Usual heuristic dictates that connections should be terminated. The issue however is who calls it?
@@ -773,7 +775,8 @@ handler(PName,PLink,('error',Param1)):-
 									retract(transit_agent(Ele,PLink)),
 									%write(`~M~JAgent Out of transfer queue for ERROR restart`:GUID:Ele),
 									restart_agent(Ele),
-									agent_post(Ele,[],migration(Ele,Port)),
+									% agent_post(Ele,[],migration(Ele,Port)),
+									help_move_typhlet(Ele), % Actually help_move_typhlet definition needs modification to handle case of this error. Later
 									(write(Ele),write(`-Failed to migrate, Has been created again.`))~>DD,
 									send_log(DD)
 								); nothing

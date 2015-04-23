@@ -319,7 +319,9 @@ find_least(Il,[],P,Z):- P = Z,!.
 clause(connect_log/1).
 connect_log(Sname):- hide(Sname,0),
 		     	log_server(Server),
-		     	screate(Sname,(Server,49000)),
+				repeat,
+		     	catch( Err, (screate(Sname,(Server,49000)),!)),
+				Err = 0,
 			connect_check(Sname),!.
 			
 			

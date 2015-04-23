@@ -39,8 +39,8 @@ start_exe:-
 				neighbors( Neigh, IP, Port, _, _ )
 				,
 				(
-					connect( IP, Port, LinkToNeigh ),
-					clone_typhlet( G, LinkToNeigh ),
+					clone_typhlet_local(G, GUID2),
+					move_typhlet(GUID2, IP, Port),
 					( write( `Packet sent from,`), write( ThisNode ), write( `,to,` ), write( Neigh )) ~> Ss,
 					send_log( Ss )
 				)
