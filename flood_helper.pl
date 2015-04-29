@@ -91,10 +91,9 @@ help_move_typhlet( GUID ):-
 		(
 			/*( write( `Here` ) ) ~> Test,
 			send_log( Test ),*/
-			problemOnCurrentNode( OriginalProblem ), % Another option is we can use the source node id, which may be better.
-			( OriginalProblem == AgentProblem ->
+			( node_info( ProbNode, _, _ ) ->
 				(
-					( node_info( ProbNode, _, _ ) ->
+					( problemOnCurrentNode( AgentProblem ) ->
 						(
 							% consume the solution
 							typhlet_kill( GUID ),		%more details can be added later like memorizing the solution, etc.
@@ -104,11 +103,10 @@ help_move_typhlet( GUID ):-
 							( write( `Solution received at,` ), write( ProbNode ), write( `,Currentnode:,` ), write( CurrentNode ), write( `,` ), write( AgentProblem) ) ~> Var1,
 							send_log( Var1 )
 						)
-					;
+					;	% The problem carried by packet is already received.
 						(
-							( write( `Origin node different,SourceNode:,` ), write( ProbNode ), write( `,Currentnode:,` ), write( CurrentNode ), write( `,` ), write( AgentProblem) ) ~> Var3,
-							send_log( Var3 ),
-							move_backwards( GUID, Last, VList )
+							% Therefore simply kill the packet.
+							typhlet_kill( GUID )
 						)
 					)
 				)
