@@ -63,6 +63,23 @@ induce_network:-
 			)
 		),!.
 
+induce_network2:-
+	network_ips(TM_List),
+	forall(
+			(member(Mem,TM_List)),		
+			(
+				[Host] = Mem,
+				agent_create(master,L,Host,15000),
+				config_file(File), nl,write(File),
+				agent_post(master,L,exec_sol(consult(File))),
+				delay(250),
+				agent_post(master,L,exec_sol(node_ip(Host))),
+				agent_post(master,L,exec_sol(load_config)),
+				agent_post(master,L,exec_sol(halt)),
+				write(`~M~JNetwork induced at the host (IP)`:Host)
+			)
+		),!.
+
 master_handler(Name,Link,load_over(node)):-
 	write(`~M~JChangeing Status`),
 	network_ips(TM_List),
@@ -124,6 +141,9 @@ initialize_initial_values:-
 
 	agent_post( master, PL2, exec_sol( consult( 'initiation.pl' ) ) ),
 	agent_post( master, PL2, exec_sol( start_exe ) ).*/
+
+start_handler( Name, Status ):-
+	start_experiment.
 
 start_experiment:-
 	consult( 'events.pl' ),
