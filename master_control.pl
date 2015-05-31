@@ -58,7 +58,7 @@ induce_network:-
 				%agent_post(master,NewL,exec_sol(write(`~M~J NewLink`:NewL))),
 				%agent_post(master,NewL,exec_sol(agent_post(taskmanager,NewL,load_over(node)))),
 				%node_info(_,Master,_),
-				agent_post(master,L,exec_sol((agent_create(taskmanager,NewL,`172.16.27.151`,15190),agent_post(taskmanager,NewL,load_over(node))))),
+				agent_post(master,L,exec_sol((agent_create(taskmanager,NewL,`172.16.117.121`,15190),agent_post(taskmanager,NewL,load_over(node))))),
 				write(`~M~JNetwork induced at the host (IP)`:Host)
 			)
 		),!.

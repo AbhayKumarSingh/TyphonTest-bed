@@ -400,7 +400,7 @@ clause(set_logserver/1).
 set_logserver(Server):-
 	retractall(log_server(_)),
 	assert(log_server(Server)).
-log_server(`172.16.27.151`).
+log_server(`172.16.117.121`).
 
 % connect_logserver creates a static agent log_client and establishes a link with the log_agent 
 % running at the logging server.
